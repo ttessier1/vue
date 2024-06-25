@@ -1,0 +1,41 @@
+<html>
+<head>
+<link rel="stylesheet" href="/main.css" />
+<title>Tutorial 14 - Vue.js</title>
+</head>
+<body>
+<h1>Tutorial 14</h1>
+<script>
+console.log("Imports Map");  
+</script>
+<script type="importmap">
+    
+  {
+    "imports": {
+      "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js"
+    }
+  }
+</script>
+<script type="module">
+import { createApp, ref } from 'vue'
+import ChildComp from '/Tutorial14/js/ChildComponent.js'
+
+createApp({
+  components: {
+    ChildComp
+  },
+  setup() {
+    const msg = ref('from parent');
+
+    return {
+      msg
+    }
+  }
+}).mount('#app')
+</script>
+
+<div id="app">
+  <child-comp>Message: {{ msg }}</child-comp>
+</div>
+</body>
+</html>

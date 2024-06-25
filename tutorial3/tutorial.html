@@ -1,0 +1,37 @@
+<html>
+<head>
+<link rel="stylesheet" href="/main.css" />
+<title>Tutorial 3 - Vue.js</title>
+</head>
+<body>
+<h1>Tutorial 3</h1>
+<script>
+console.log("Imports Map");  
+</script>
+<script type="importmap">
+    
+  {
+    "imports": {
+      "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js"
+    }
+  }
+</script>
+<script type="module">
+import { createApp, reactive, ref } from 'vue'
+
+createApp({
+  setup() {
+    const titleClass = ref('title')
+
+    return {
+      titleClass
+    }
+  }
+}).mount('#app')
+</script>
+
+<div id="app">
+  <h1 :class="titleClass">Make Me Red</h1>
+</div>
+</body>
+</html>

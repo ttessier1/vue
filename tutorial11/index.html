@@ -1,0 +1,30 @@
+<html>
+<head>
+<link rel="stylesheet" href="/main.css" />
+<title>Tutorial 11 - Vue.js</title>
+</head>
+<body>
+<h1>Tutorial 11</h1>
+<p>The output below should show an html child item as represented in a module</p>
+<textarea id="txtBody" rows=10 cols=100>
+<script type="module">
+  <script type="module">
+  import { createApp } from 'vue'
+  import ChildComp from '/tutorial11/js/ChildComponent.js'
+
+createApp({
+  components: {
+    ChildComp
+  }
+}).mount('#app')
+</script>
+
+<div id="app">
+  <child-comp></child-comp>
+</div>
+</textarea>
+<iframe id="content" src="Tutorial11/tutorial.html">
+</iframe>
+<a href="..">Back</a>
+</body>
+</html>

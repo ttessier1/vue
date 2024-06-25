@@ -1,0 +1,29 @@
+<html>
+<head>
+<link rel="stylesheet" href="/main.css" />
+<title>Tutorial 1 - Vue.js</title>
+</head>
+<body>
+<h1>Tutorial 1</h1>
+<p>The output below should replace the text {{message}} with "Hello Vue!" </p>
+<textarea id="txtBody" rows=10 cols=100>
+<script type="module">
+import { createApp, ref } from 'vue'
+console.log("Before App Create");
+createApp({
+  setup() {
+    const message = ref('Hello Vue!')
+    return {
+      message
+    }
+  }
+}).mount('#app')
+console.log("After App Mount");
+
+</script>
+<div id="app">{{ message }}</div></textarea>
+<iframe id="content" src="Tutorial1/tutorial.html">
+</iframe>
+<a href="..">Back</a>
+</body>
+</html>

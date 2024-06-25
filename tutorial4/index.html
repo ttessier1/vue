@@ -1,0 +1,29 @@
+<html>
+<head>
+<link rel="stylesheet" href="/main.css" />
+<title>Tutorial 4 - Vue.js</title>
+</head>
+<body>
+<h1>Tutorial 4</h1>
+<p>The output below should be a button that when clicked increments from 0 up as it is clicked </p>
+<textarea id="txtBody" rows=10 cols=100>
+<script type="module">
+import { createApp, ref } from 'vue'
+console.log("Before App Create");
+createApp({
+  setup() {
+    const message = ref('Hello Vue!')
+    return {
+      message
+    }
+  }
+}).mount('#app')
+console.log("After App Mount");
+
+</script>
+<div id="app">{{ message }}</div></textarea>
+<iframe id="content" src="Tutorial4/tutorial.html">
+</iframe>
+<a href="..">Back</a>
+</body>
+</html>

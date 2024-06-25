@@ -1,0 +1,37 @@
+<html>
+<head>
+<link rel="stylesheet" href="/main.css" />
+<title>Tutorial 13 - Vue.js</title>
+</head>
+<body>
+<h1>Tutorial 13</h1>
+<p>The output below should show an html child item as represented in a module by a property with the frase 'hello [Vue] from child' as opposed to an empty value or 'No child message yet'. In this example, thevalue is emitted as an event as described in the tutorial documentation.</p>
+<textarea id="txtBody" rows=10 cols=100>
+<script type="module">
+import { createApp, ref } from 'vue'
+import ChildComp from '/Tutorial13/js/ChildComponent.js'
+
+createApp({
+  components: {
+    ChildComp
+  },
+  setup() {
+    const childMsg = ref('No child message yet')
+
+    return {
+      childMsg
+    }
+  }
+}).mount('#app')
+</script>
+
+<div id="app">
+  <child-comp @response="(msg) => childMsg = msg"></child-comp>
+  <p>{{ childMsg }}</p>
+</div>
+</textarea>
+<iframe id="content" src="Tutorial13/tutorial.html">
+</iframe>
+<a href="..">Back</a>
+</body>
+</html>

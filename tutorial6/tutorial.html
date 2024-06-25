@@ -1,0 +1,43 @@
+<html>
+<head>
+<link rel="stylesheet" href="/main.css" />
+<title>Tutorial 6 - Vue.js</title>
+</head>
+<body>
+<h1>Tutorial 6</h1>
+<script>
+console.log("Imports Map");  
+</script>
+<script type="importmap">
+    
+  {
+    "imports": {
+      "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js"
+    }
+  }
+</script>
+<script type="module">
+import { createApp, ref } from 'vue'
+console.log("Before App Create");
+createApp({
+  setup() {
+    const awesome = ref(true);
+    function toggle(e) {
+       awesome.value=!awesome.value;
+    }
+    return {
+      awesome,
+      toggle
+    }
+  }
+}).mount('#app')
+console.log("After App Mount");
+</script>
+
+<div id="app">
+  <button @click="toggle">Toggle</button>
+  <h1 v-if="awesome">Vue is awesome!</h1>
+  <h1 v-else>Oh no 😢</h1>
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+<head>
+<link rel="stylesheet" href="/main.css" />
+<title>Tutorial 12 - Vue.js</title>
+</head>
+<body>
+<h1>Tutorial 12</h1>
+<p>The output below should show an html child item as represented in a module by a property with the frase 'Hello from Parent' as opposed to an empty value.</p>
+<textarea id="txtBody" rows=10 cols=100>
+<script type="module">
+import { createApp, ref } from 'vue'
+import ChildComp from '/Tutorial12/js/ChildComponent.js'
+
+createApp({
+  components: {
+    ChildComp
+  },
+  setup() {
+    const greeting = ref('Hello from parent')
+
+    return {
+      greeting
+    }
+  }
+}).mount('#app')
+</script>
+
+<div id="app">
+  <child-comp :msg="greeting"></child-comp>
+</div>
+</textarea>
+<iframe id="content" src="Tutorial12/tutorial.html">
+</iframe>
+<a href="..">Back</a>
+</body>
+</html>

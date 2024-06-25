@@ -1,0 +1,32 @@
+<html>
+<head>
+<link rel="stylesheet" href="/main.css" />
+<title>Tutorial 3 - Vue.js</title>
+</head>
+<body>
+<h1>Tutorial 3</h1>
+<p>The output below should set the color of the text by applying the title class</p>
+<textarea id="txtBody" rows=10 cols=100>
+<script type="module">
+import { createApp, reactive, ref } from 'vue'
+
+createApp({
+  setup() {
+    const titleClass = ref('title')
+
+    return {
+      titleClass
+    }
+  }
+}).mount('#app')
+</script>
+
+<div id="app">
+  <h1 :class="titleClass">Make Me Red</h1>
+</div>
+</textarea>
+<iframe id="content" src="Tutorial3/tutorial.html">
+</iframe>
+<a href="..">Back</a>
+</body>
+</html>

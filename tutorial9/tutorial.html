@@ -1,0 +1,45 @@
+<html>
+<head>
+<link rel="stylesheet" href="/main.css" />
+<title>Tutorial 9 - Vue.js</title>
+</head>
+<body>
+<h1>Tutorial 9</h1>
+<script>
+console.log("Imports Map");  
+</script>
+<script type="importmap">
+    
+  {
+    "imports": {
+      "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js"
+    }
+  }
+</script>
+<script type="module">
+import { createApp, ref, onMounted,onUnmounted } from 'vue'
+console.log("Before App Create");
+createApp({
+  setup(){
+  const pElementRef = ref(null)
+    onMounted(() => {
+      console.log("Mounted");      
+      pElementRef.value.textContent = 'Successful Element mount'
+    })
+    onUnmounted(() => {
+      console.log("Unmounted");
+    })
+    return {
+      pElementRef,
+      onMounted,
+      onUnmounted,
+    }
+  }
+}).mount('#app')
+</script>
+
+<div id="app">
+  <p ref="pElementRef">Hello</p>
+</div>
+</body>
+</html>

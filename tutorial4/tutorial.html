@@ -1,0 +1,42 @@
+<html>
+<head>
+<link rel="stylesheet" href="/main.css" />
+<title>Tutorial 4 - Vue.js</title>
+</head>
+<body>
+<h1>Tutorial 4</h1>
+<script>
+console.log("Imports Map");  
+</script>
+<script type="importmap">
+    
+  {
+    "imports": {
+      "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js"
+    }
+  }
+</script>
+<script type="module">
+import { createApp, ref } from 'vue'
+console.log("Before App Create");
+createApp({
+  setup() {
+    const count = ref(0);
+    function increment(e)
+    {
+	count.value++;
+    }
+    return {
+      count,
+      increment
+    }
+  }
+}).mount('#app')
+console.log("After App Mount");
+</script>
+
+<div id="app">
+  <button @click="increment"> Count is: {{ count }} </button>
+</div>
+</body>
+</html>

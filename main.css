@@ -1,0 +1,11 @@
+*{font-family:Verdana; font-size:14px;}
+h1{font-size:20px;color:#000080;}
+h1.title{color:#FF0000;}
+h2{font-size:18px;color:#00008AA;}
+h3{font-size:16px;}
+body{width:900px;margin:0 auto;}
+p{width:50%;}
+textarea{width:48%;height:400px;}
+iframe{width:48%;height:400px;}
+#tutorial-container{margin:0 auto;position:relative;width:800px;height:300px;overflow-y: scroll;}
+.done {text-decoration: line-through;}

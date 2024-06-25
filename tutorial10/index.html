@@ -1,0 +1,54 @@
+<html>
+<head>
+<link rel="stylesheet" href="/main.css" />
+<title>Tutorial 10 - Vue.js</title>
+</head>
+<body>
+<h1>Tutorial 10</h1>
+<p>The output below should show a list of items one at a time from a feed that updates on the button click with the next item based on the todoId count.</p>
+<textarea id="txtBody" rows=10 cols=100>
+<script type="module">
+  console.log("Before create App");
+  import { createApp, ref, watch } from 'vue'
+  createApp({
+    setup() {
+
+      const todoId = ref(1)
+      const todoData = ref(null)
+      const count = ref(0)
+
+      
+
+      async function fetchData() {
+        console.log(todoId.value);
+        todoData.value = null
+        const res = await fetch(
+          `https://jsonplaceholder.typicode.com/todos/${todoId.value}`
+        )
+        todoData.value = await res.json()
+      }
+
+      fetchData()
+      
+      watch(todoId, fetchData)
+ 
+      return {
+        todoId,
+        todoData
+      }
+    }
+  }).mount('#app')
+</script>
+
+<div id="app">
+  <p>Todo id: {{ todoId }}</p>
+  <button @click="todoId++" :disabled="!todoData">Fetch next todo</button>
+  <p v-if="!todoData">Loading...</p>
+  <pre v-else>{{ todoData }}</pre>
+</div>
+</textarea>
+<iframe id="content" src="Tutorial10/tutorial.html">
+</iframe>
+<a href="..">Back</a>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<html>
+<head>
+<link rel="stylesheet" href="/main.css" />
+<title>Tutorial 7 - Vue.js</title>
+</head>
+<body>
+<h1>Tutorial 7</h1>
+<p>The output below should a modifiable list ( add/delete ). </p>
+<textarea id="txtBody" rows=10 cols=100>
+<script type="module">
+import { createApp, ref } from 'vue'
+console.log("Before App Create");
+createApp({
+  setup() {
+    let id = 0
+
+    const newTodo = ref('')
+    const todos = ref([
+      { id: id++, text: 'Learn HTML' },
+      { id: id++, text: 'Learn JavaScript' },
+      { id: id++, text: 'Learn Vue' }
+    ])
+
+    function addTodo() {
+      // append item
+      todos.value.push({id: id++, text: newTodo.value});
+      // reset the input value to blank
+      newTodo.value='';
+    }
+
+    function removeTodo(todo) {
+      todos.value=todos.value.filter((t) => t !== todo);
+    }
+
+    return {
+      newTodo,
+      todos,
+      addTodo,
+      removeTodo
+    }
+  }
+}).mount('#app')
+console.log("After App Mount");
+</script>
+
+<div id="app">
+  <form @submit.prevent="addTodo">
+    <input v-model="newTodo" required placeholder="new todo" maxlength="25">
+    <button>Add Todo</button>
+  </form>
+  <ul>
+    <li v-for="todo in todos" :key="todo.id">
+      {{ todo.text }}
+      <button @click="removeTodo(todo)">X</button>
+    </li>
+  </ul></textarea>
+<iframe id="content" src="Tutorial7/tutorial.html">
+</iframe>
+<a href="..">Back</a>
+</body>
+</html>

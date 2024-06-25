@@ -1,0 +1,38 @@
+<html>
+<head>
+<link rel="stylesheet" href="/main.css" />
+<title>Tutorial 5 - Vue.js</title>
+</head>
+<body>
+<h1>Tutorial 5</h1>
+<p>The output below should be textbox that when text is entered up to 10 characters echos below the textbox </p>
+<textarea id="txtBody" rows=10 cols=100>
+<script type="module">
+import { createApp, ref } from 'vue'
+console.log("Before App Create");
+createApp({
+  setup() {
+    const text = ref('');
+    function onInput(e)
+    {
+	text.value = e.target.value;
+    }
+    return {
+      text,
+      onInput
+    }
+  }
+}).mount('#app')
+console.log("After App Mount");
+</script>
+
+<div id="app">
+  <input :value="text" @input="onInput" placeholder="Type here" maxlength="10">
+  <p>{{ text }}</p>
+</div>
+</textarea>
+<iframe id="content" src="Tutorial5/tutorial.html">
+</iframe>
+<a href="..">Back</a>
+</body>
+</html>

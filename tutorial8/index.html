@@ -1,0 +1,72 @@
+<html>
+<head>
+<link rel="stylesheet" href="/main.css" />
+<title>Tutorial 8 - Vue.js</title>
+</head>
+<body>
+<h1>Tutorial 8</h1>
+<p>The output below should be a list that can be hidden or shown based on a computed property. </p>
+<textarea id="txtBody" rows=10 cols=100>
+<script type="module">
+import { createApp, ref, computed } from 'vue'
+console.log("Before App Create");
+createApp({
+  setup(){
+  let id = 0
+
+    const newTodo = ref('')
+    const hideCompleted = ref(false)
+    const todos = ref([
+      { id: id++, text: 'Learn HTML', done: true },
+      { id: id++, text: 'Learn JavaScript', done: true },
+      { id: id++, text: 'Learn Vue', done: false }
+    ])
+
+    const filteredTodos = computed(() => {
+      return hideCompleted.value
+        ? todos.value.filter((t) => !t.done)
+        : todos.value
+    })
+
+    function addTodo() {
+      todos.value.push({ id: id++, text: newTodo.value, done: false })
+      newTodo.value = ''
+    }
+
+    function removeTodo(todo) {
+      todos.value = todos.value.filter((t) => t !== todo)
+    }
+
+    return {
+      newTodo,
+      hideCompleted,
+      todos,
+      filteredTodos,
+      addTodo,
+      removeTodo
+    }
+  }
+}).mount('#app')
+</script>
+
+<div id="app">
+  <form @submit.prevent="addTodo">
+    <input v-model="newTodo" required placeholder="new todo" maxlength="25">
+    <button>Add Todo</button>
+  </form>
+  <ul>
+    <li v-for="todo in filteredTodos">
+      <input type="checkbox" v-model="todo.done">
+      <span :class="{ done: todo.done }">{{ todo.text }}</span>
+      <button @click="removeTodo(todo)">X</button>
+    </li>
+  </ul>
+  <button @click="hideCompleted = !hideCompleted">
+    {{ hideCompleted ? 'Show all' : 'Hide completed' }}
+  </button>
+</textarea>
+<iframe id="content" src="Tutorial8/tutorial.html">
+</iframe>
+<a href="..">Back</a>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+<head>
+<link rel="stylesheet" href="main.css" />
+<title>Tutorial 1 - Vue.js</title>
+
+</head>
+<body>
+<h1>Tutorial 1</h1>
+
+<script>
+console.log("Imports Map");  
+</script>
+<script type="importmap">
+  {
+    "imports": {
+      "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js"
+    }
+  }
+</script>
+<script type="module">
+import { createApp, ref } from 'vue'
+console.log("Before App Create");
+createApp({
+  setup() {
+    const message = ref('Hello Vue!')
+    return {
+      message
+    }
+  }
+}).mount('#app')
+console.log("After App Mount");
+
+</script>
+<div id="app">{{ message }}</div>
+</body>
+</html>

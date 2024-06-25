@@ -1,0 +1,35 @@
+<html>
+<head>
+<link rel="stylesheet" href="/main.css" />
+<title>Tutorial 2 - Vue.js</title>
+</head>
+<body>
+<h1>Tutorial 2</h1>
+<p>The output below should replace the text {{message}} with "Hello World!" printed backwards and the text {{ counter.count }} should be replaced by the count value</p>
+<textarea id="txtBody" rows=10 cols=100>
+<script type="module">
+import { createApp, reactive, ref } from 'vue'
+console.log("Before App Create");
+createApp({
+  setup() {
+    const counter = reactive({ count: 0 })
+    const message = ref('Hello World!')
+    return {
+      counter,
+      message
+    }
+  }
+}).mount('#app')
+console.log("After App Mount");
+</script>
+
+<div id="app">
+  <h1>{{ message.split('').reverse().join('') }}</h1>
+  <p>Count is: {{ counter.count }}</p>
+</div>
+</textarea>
+<iframe id="content" src="Tutorial2/tutorial.html">
+</iframe>
+<a href="..">Back</a>
+</body>
+</html>

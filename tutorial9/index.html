@@ -1,0 +1,40 @@
+<html>
+<head>
+<link rel="stylesheet" href="/main.css" />
+<title>Tutorial 9 - Vue.js</title>
+</head>
+<body>
+<h1>Tutorial 9</h1>
+<p>The output below should show a "p" element that updates to frase "Successful Element mount" after the element has mounted, original text "Hello"</p>
+<textarea id="txtBody" rows=10 cols=100>
+<script type="module">
+import { createApp, ref, onMounted,onUnmounted } from 'vue'
+console.log("Before App Create");
+createApp({
+  setup(){
+  const pElementRef = ref(null)
+    onMounted(() => {
+      console.log("Mounted");      
+      pElementRef.value.textContent = 'Successful Element mount'
+    })
+    onUnmounted(() => {
+      console.log("Unmounted");
+    })
+    return {
+      pElementRef,
+      onMounted,
+      onUnmounted,
+    }
+  }
+}).mount('#app')
+</script>
+
+<div id="app">
+  <p ref="pElementRef">Hello</p>
+</div>
+</textarea>
+<iframe id="content" src="Tutorial9/tutorial.html">
+</iframe>
+<a href="..">Back</a>
+</body>
+</html>

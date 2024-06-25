@@ -1,0 +1,38 @@
+<html>
+<head>
+<link rel="stylesheet" href="/main.css" />
+<title>Tutorial 6 - Vue.js</title>
+</head>
+<body>
+<h1>Tutorial 6</h1>
+<p>The output below should a couple of messages that are toggled by the button click. </p>
+<textarea id="txtBody" rows=10 cols=100>
+<script type="module">
+import { createApp, ref } from 'vue'
+console.log("Before App Create");
+createApp({
+  setup() {
+    const awesome = ref(true);
+    function toggle(e) {
+       awesome.value=!awesome.value;
+    }
+    return {
+      awesome,
+      toggle
+    }
+  }
+}).mount('#app')
+console.log("After App Mount");
+</script>
+
+<div id="app">
+  <button :class="titleClass" @click="toggle">Toggle</button>
+  <h1 v-if="awesome">Vue is awesome!</h1>
+  <h1 v-else>Oh no 😢</h1>
+</div>
+</textarea>
+<iframe id="content" src="Tutorial6/tutorial.html">
+</iframe>
+<a href="..">Back</a>
+</body>
+</html>
